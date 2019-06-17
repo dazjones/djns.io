@@ -1,0 +1,112 @@
+<head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    
+        <!-- Page Meta -->
+        <title>{{ block "title" . }}
+          {{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} - {{ .Site.Title }}{{ end }}
+          {{ end }}</title>
+    
+        <meta name="description" content="Cloud Native Engineer, Musician, Biker, Luthier" />
+        <meta name="keywords" content="Darren Jones,Daz Jones,Cloud Native,Cardiff,London,Concourse CI,BOSH,Cloud Foundry" />
+        <meta name="author" content="Darren Jones" />
+
+        <meta name="HandheldFriendly" content="True" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        {{ if .RSSLink -}}
+          <link href="{{ .RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
+        {{ end -}}
+    
+        <!-- Styles and Fonts -->
+        <link rel="preload" href="{{ "assets/css/normalize.css" | relURL }}" as="style" onload="this.rel='stylesheet'">
+        <link rel="preload" href="{{ "assets/css/icons.css" | relURL }}" as="style" onload="this.rel='stylesheet'">
+        <link href="{{ "assets/css/screen.css" | relURL }}" rel="stylesheet">
+
+        {{ if .Site.Params.replaceGoogleFonts }}
+        <link rel="preload" href="https://{{ .Site.Params.replaceGoogleFonts }}/css?family=Bree+Serif|Lato:100,100i,300,300i,400,400i,700,700i|Source+Code+Pro:300,400,500,700" as="style" onload="this.rel='stylesheet'">
+        {{ else }}
+        <link rel="preload" href="https://fonts.googleapis.com/css?family=Bree+Serif|Lato:100,100i,300,300i,400,400i,700,700i|Source+Code+Pro:300,400,500,700" as="style" onload="this.rel='stylesheet'">
+        {{ end }}
+    
+        <!-- custom css -->
+        {{ range .Site.Params.customCSS }}
+        <link rel="stylesheet" href="{{ "/css/" | relURL }}{{ . }}">
+        {{ end }}
+        {{ if .IsHome }}
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "Website",
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "Darren Jones",
+                    "logo": "https://djns.io/static/img/avatar-circle.png"
+                },
+                "url": "https://djns.io/",
+                "mainEntityOfPage": {
+                    "@type": "WebPage",
+                    "@id": "https://djns.io/"
+                },
+                "description": "Cloud Native Engineer, Musician, Biker, Luthier."
+            }
+        </script>
+        {{ else }}
+        <meta property="og:site_name" content="Darren Jones" />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content="{{ .Title | safeHTML }}" />
+        <meta property="og:description" content="{{ .Summary | plainify }}" />
+        <meta property="og:url" content="{{ .Permalink }}" />
+        <meta property="article:published_time" content="{{ .PublishDate }}" />
+        <meta property="article:modified_time" content="{{ .Lastmod }}" />
+        <meta property="article:tag" content="{{ .Params.tags }}" />
+        
+        <meta property="article:publisher" content="https://www.facebook.com/dazjones" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="{{ .Title | safeHTML }}" />
+        <meta name="twitter:description" content="{{ .Summary | plainify }}" />
+        <meta name="twitter:url" content="{{ .Permalink }}" />
+        <meta name="twitter:label1" content="Written by" />
+        <meta name="twitter:data1" content="Darren Jones" />
+        <meta name="twitter:label2" content="Filed under" />
+        <meta name="twitter:data2" content="{{ .Params.tags }}" />
+        <meta name="twitter:site" content="@dazjones" />
+        <meta name="twitter:creator" content="@dazjones" />
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "Article",
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "Darren Jones",
+                    "logo": "https://djns.io/static/img/avatar-circle.png"
+                },
+                "author": {
+                    "@type": "Person",
+                    "name": "Darren Jones",
+                    "image": {
+                        "@type": "ImageObject",
+                        "url": "https://djns.io/static/img/avatar-circle.png,
+                        "width": 1080,
+                        "height": 720
+                    },
+                    "url": "http://djns.io/author/darren/",
+                    "sameAs": [
+                        "http://djns.io",
+                        "https://twitter.com/dazjones"
+                    ]
+                },
+                "headline": "{{ .Title | safeHTML }}",
+                "url": "{{ .Permalink }}",
+                "datePublished": "{{ .PublishDate.Format (.Site.Params.dateFormatToUse | default "January 02, 2006") }}",
+                "dateModified": "{{ .Lastmod.Format (.Site.Params.dateFormatToUse | default "January 02, 2006") }}",
+                "keywords": "{{ .Params.tags }}",
+                "description": "{{ .Summary | plainify }}",
+                "mainEntityOfPage": {
+                    "@type": "WebPage",
+                    "@id": "http://djns.io/"
+                }
+            }
+                </script>
+        {{ end }}
+    </head>
+    

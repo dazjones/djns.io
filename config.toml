@@ -1,0 +1,13 @@
+baseurl = "https://djns.io/"
+title = "Darren Jones"
+author = "Darren Jones"
+paginate = 10
+theme = "arabica"
+
+[permalinks]
+  post = "/:title/"
+
+[params]
+    description = "CLOUD NATIVE ENGINEER, MUSICIAN, BIKER, LUTHIER."
+    replaceGoogleFonts = "fonts.loli.net"
+    twitter = "dazjones"

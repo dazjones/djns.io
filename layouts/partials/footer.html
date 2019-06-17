@@ -1,0 +1,17 @@
+<footer class="site-footer">
+    <section class="rss"><a class="subscribe-button icon-feed" href="/index.xml"></a></section>
+    <section class="copyright">&copy; {{ now.Format "2006" }} {{ .Site.Title }}</section>
+  </footer>
+  <!-- custom js -->
+  {{ range .Site.Params.customJS }}
+    <script src="{{ "/js/" | relURL }}{{ . }}"></script>
+  {{ end }}
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-124582153-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-124582153-1');
+</script>
