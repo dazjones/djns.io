@@ -8,6 +8,6 @@ theme = "arabica"
   post = "/:title/"
 
 [params]
-    description = "CLOUD NATIVE ENGINEER, MUSICIAN, BIKER, LUTHIER."
+    description = "PLATFORM ENGINEER, MUSICIAN, COMPOSER"
     replaceGoogleFonts = "fonts.loli.net"
     twitter = "dazjones"
